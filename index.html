@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>바이브 코딩 필수 용어집 · Vibe Coding Glossary (KR)</title>
+<meta name="description" content="바이브 코딩(Vibe Coding)에 필요한 AI·머신러닝·개발 핵심 용어 300선 한국어 해설">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+  :root{
+    --accent:#caaa44;
+    --accent-soft:#f7efd4;
+    --bg:#ffffff;
+    --text:#1a1a1a;
+    --muted:#6b6b6b;
+    --line:#ececec;
+    --card:#fcfbf7;
+    --shadow:0 1px 2px rgba(0,0,0,.03),0 8px 24px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;line-height:1.6;}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 96px;position:relative}
+
+  .profile-banner{
+    position:absolute;top:24px;right:24px;
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fcf8ec;border:1px solid #f1e6c2;
+    padding:8px 16px 8px 8px;border-radius:999px;
+    text-decoration:none;color:var(--text);
+    transition:transform .15s,box-shadow .15s,border-color .15s;
+    box-shadow:0 1px 2px rgba(0,0,0,.02);
+  }
+  .profile-banner:hover{
+    transform:translateY(-1px);border-color:var(--accent);
+    box-shadow:0 6px 16px rgba(202,170,68,.18);text-decoration:none
+  }
+  .profile-banner .avatar{
+    width:38px;height:38px;border-radius:50%;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;border:1px solid #f0e5c0;overflow:hidden
+  }
+  .profile-banner .p-text{display:flex;flex-direction:column;line-height:1.2}
+  .profile-banner .p-name{font-weight:700;font-size:14px;color:var(--text)}
+  .profile-banner .p-sub{font-size:12px;color:var(--accent);font-weight:600;margin-top:2px}
+
+  @media (max-width:640px){
+    .profile-banner{position:static;margin:0 auto 16px;display:flex;width:fit-content}
+  }
+
+  header{text-align:center;padding:32px 0 12px}
+  .eyebrow{font-size:13px;letter-spacing:.18em;color:var(--accent);font-weight:600;text-transform:uppercase}
+  h1{font-size:40px;margin:10px 0 8px;font-weight:700;letter-spacing:-.02em}
+  h1 .dot{color:var(--accent)}
+  .sub{color:var(--muted);font-size:15px;margin:0 auto;max-width:640px;font-weight:400}
+  .cta{display:inline-flex;align-items:center;gap:10px;margin-top:20px;
+    background:#111;color:#fff;text-decoration:none;
+    padding:12px 22px;border-radius:999px;font-weight:600;font-size:14.5px;
+    box-shadow:0 4px 14px rgba(0,0,0,.22);
+    transition:transform .15s,box-shadow .15s,background .15s}
+  .cta:hover{background:#000;transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(0,0,0,.3);text-decoration:none}
+  .cta .gift{display:inline-flex;align-items:center;justify-content:center;
+    width:22px;height:22px;border-radius:50%;background:rgba(202,170,68,.22);
+    font-size:12px;font-weight:700}
+  .cta .brand{color:var(--accent);font-weight:700}
+  .cta .sep{color:#555}
+  .cta .desc{color:#fff}
+  .cta .arrow{font-weight:700;transition:transform .15s;color:var(--accent)}
+  .cta:hover .arrow{transform:translateX(3px)}
+
+  .search{margin:36px auto 20px;max-width:620px;position:relative}
+  .search input{
+    width:100%;padding:16px 48px 16px 20px;border:1.5px solid var(--line);
+    border-radius:14px;font-size:16px;font-family:inherit;outline:none;
+    background:#fff;transition:border-color .15s, box-shadow .15s;
+  }
+  .search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  .search::after{content:"⌕";position:absolute;right:18px;top:50%;transform:translateY(-50%);
+    color:var(--muted);font-size:22px;pointer-events:none}
+
+  .stat{text-align:center;color:var(--muted);font-size:13px;margin-bottom:20px}
+  .stat b{color:var(--accent)}
+
+  .alpha{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;
+    padding:10px;margin:0 auto 28px;max-width:860px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .alpha button{
+    border:0;background:transparent;padding:6px 10px;border-radius:8px;
+    font-family:inherit;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer;
+    transition:background .12s,color .12s;min-width:32px;
+  }
+  .alpha button:hover{background:var(--accent-soft);color:var(--accent)}
+  .alpha button.active{background:var(--accent);color:#fff}
+  .alpha button.disabled{opacity:.25;cursor:default}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;transition:transform .12s,box-shadow .12s,border-color .12s;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--accent)}
+  .term{font-size:17px;font-weight:700;color:var(--text);margin:0 0 2px;letter-spacing:-.01em}
+  .ko{font-size:14px;color:var(--accent);font-weight:600;margin-bottom:8px}
+  .def{font-size:14px;color:#3a3a3a;margin:0;font-weight:400;line-height:1.65}
+
+  .section-head{
+    grid-column:1/-1;font-size:28px;font-weight:700;color:var(--accent);
+    padding:18px 4px 4px;margin-top:12px;border-bottom:2px solid var(--accent-soft)
+  }
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+
+  footer{margin-top:72px;text-align:center;color:var(--muted);font-size:13px;
+    padding-top:28px;border-top:1px solid var(--line)}
+  footer a{color:var(--muted);border-bottom:1px dashed var(--accent)}
+
+  @media (max-width:640px){
+    .wrap{padding:28px 16px 72px}
+    h1{font-size:30px}
+    .grid{grid-template-columns:1fr}
+  }
+
+  mark{background:var(--accent-soft);color:var(--text);padding:0 2px;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="profile-banner" href="https://www.instagram.com/woojooboss_/" target="_blank" rel="noopener" aria-label="우주보스 인스타그램 바로가기">
+  <span class="avatar"><img src="avatar.png" alt="우주보스" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></span>
+  <span class="p-text">
+    <span class="p-name">우주보스</span>
+    <span class="p-sub">인스타 바로가기 →</span>
+  </span>
+</a>
+
+<header>
+  <div class="eyebrow">Vibe Coding Glossary · KR</div>
+  <h1>바이브 코딩 필수 용어집<span class="dot">.</span></h1>
+  <p class="sub">바이브 코딩(Vibe Coding)을 이해하는 데 필요한 AI·머신러닝·개발 핵심 용어를 한국어로 정리했습니다.</p>
+  <a class="cta" href="https://blog.naver.com/woojooboss/223558177937" target="_blank" rel="noopener">
+    <span class="gift">🎁</span>
+    <span class="brand">우주보스의 선물</span>
+    <span class="sep">·</span>
+    <span class="desc">10GB 분량의 무료 콘텐츠 소스팩 받기</span>
+    <span class="arrow">→</span>
+  </a>
+</header>
+
+<div class="search">
+  <input id="q" type="text" placeholder="용어 검색 (예: RAG, 프롬프트, 에이전트, transformer...)" autocomplete="off">
+</div>
+
+<div class="stat" id="stat"></div>
+<nav class="alpha" id="alpha"></nav>
+
+<main class="grid" id="grid"></main>
+
+<footer>
+  <p>© 2026 · 번역/재구성: Claude Code &nbsp;|&nbsp; 원문 출처: <a href="https://codingwithvibe.com/vibe-coding-glossary-of-terms/" target="_blank" rel="noopener">Coding With Vibe</a></p>
+</footer>
+</div>
+
+<script>
+const DATA = [
+["Ablation","애블레이션(구성요소 제거 실험)","모델 일부 구성요소를 제거·제외한 뒤 재학습해 성능 변화를 관찰하며 해당 요소의 중요도를 평가하는 기법."],
+["Abductive Logic Programming (ALP)","귀추적 논리 프로그래밍","불완전하게 정의된 술어에 대해 귀추 추론으로 문제를 해결하는 고수준 지식 표현 프레임워크."],
+["Abductive Reasoning","귀추 추론","관찰된 사실로부터 가장 단순하고 그럴듯한 설명을 찾는 논리적 추론 방식."],
+["Abstraction","추상화","대상에서 물리·공간·시간적 세부를 제거하고 관심 있는 속성에만 집중하는 과정."],
+["Accept/Reject","수락/거절","AI가 제안한 코드 변경을 개발자가 선택적으로 승인 또는 거부해 품질을 유지하는 바이브 코딩 UI 기능."],
+["Activation Functions","활성화 함수","ReLU·시그모이드·tanh 등 신경망이 입력과 레이블 간 비선형 관계를 학습하도록 돕는 수학 함수."],
+["Active Learning","능동 학습","라벨링 비용이 클 때 모델이 학습에 유리한 데이터를 스스로 선택해 요청하는 학습 방식."],
+["AdaGrad","아다그라드","파라미터별로 기울기를 재조정해 각기 다른 학습률을 적용하는 정교한 경사하강법 알고리즘."],
+["Agent","에이전트","강화학습에서 정책에 따라 기대 보상을 극대화하는 주체. 최신 AI에서는 멀티모달 입력을 추론하는 소프트웨어를 뜻함."],
+["Agent Mode","에이전트 모드","Cursor·Windsurf 등에서 AI가 전체 코드베이스를 능동적으로 탐색·이해해 맥락 기반 지원을 제공하는 고급 기능."],
+["Agentic AI","에이전틱 AI","제한된 인간 감독 아래 목표를 스스로 분해·수행하며 결과에 따라 전략을 조정하는 자율형 AI 시스템."],
+["Agentic Workflow","에이전틱 워크플로","에이전트가 목표 달성을 위해 자율적으로 계획·실행·자기 교정을 반복하는 동적 작업 흐름."],
+["AI Observability","AI 관찰가능성","AI 시스템의 행동·출력·의사결정 과정을 모니터링하고 추적할 수 있는 역량."],
+["AI Slop","AI 슬롭","품질보다 양을 우선해 저렴하게 대량 생산된 생성형 AI 결과물."],
+["Alignment","얼라인먼트(정렬)","AI의 목표가 개발자의 의도와 일치해 안전하고 이로운 방향으로 작동하도록 맞추는 개념."],
+["AlphaGo","알파고","Google DeepMind가 개발한 바둑 AI로, 인간 프로 기사를 최초로 이긴 컴퓨터 프로그램."],
+["ANFIS","ANFIS(적응형 뉴로-퍼지 시스템)","신경망과 퍼지 논리를 결합해 두 방식의 장점을 모두 활용하는 인공 신경망."],
+["Anomaly Detection","이상 탐지","정상 패턴에서 크게 벗어난 데이터 포인트나 비정상 패턴을 식별하는 과정."],
+["Anthropomorphism","의인화","AI 등 비인간 개체에 인간의 특성·감정을 부여하는 사고 경향."],
+["API","API(응용 프로그램 인터페이스)","소프트웨어 간 상호작용 방식을 정의한 프로토콜·도구 모음. AI 도구 통합의 핵심."],
+["Approximation Error","근사 오차","머신러닝 모델의 근삿값과 실제 값 사이의 차이."],
+["Artificial General Intelligence (AGI)","범용 인공지능(AGI)","다양한 과제에서 인간 수준 이상의 인지 능력과 창의성을 발휘하는 AI."],
+["Artificial Intelligence (AI)","인공지능(AI)","기계가 보여주는 지능으로, 인간·동물의 자연 지능과 대비되는 개념."],
+["Artificial Neural Network","인공 신경망","계층으로 연결된 노드들로 뇌 구조를 모방해 정보를 처리하는 컴퓨터 시스템."],
+["Attention Mechanism","어텐션 메커니즘","입력 내 특정 토큰의 중요도를 가중해 트랜스포머가 다음 토큰을 예측하도록 돕는 메커니즘."],
+["Attribute","속성(attribute)","색상·크기처럼 관측값을 기술하는 특성. 머신러닝의 특성(feature)과 동의어."],
+["Auto-Encoder","오토인코더","인코더·디코더로 구성해 압축을 통해 주요 정보를 추출하도록 학습하는 신경망."],
+["Automated Machine Learning (AutoML)","오토ML","하이퍼파라미터 튜닝·특성 공학·배포까지 ML 모델 제작을 자동화하는 접근."],
+["Autonomous Agents","자율 에이전트","독립적으로 목표를 추구하고 환경과 상호작용하며 의사결정을 내리는 AI."],
+["Autoregressive Model","자기회귀 모델","자기가 이전에 낸 예측을 입력으로 다음 값을 예측하는 모델. 트랜스포머 기반 LLM이 대표적."],
+["AUC","AUC","이진 분류 모델이 양성·음성 클래스를 얼마나 잘 분리하는지 나타내는 0~1 사이 지표."],
+["Backpropagation","역전파","신경망에서 오차 기울기를 출력층에서 입력층 방향으로 전파해 가중치를 갱신하는 알고리즘."],
+["Bagging","배깅","데이터의 무작위 부분집합으로 여러 모델을 학습시켜 안정성·정확도를 높이는 앙상블 기법."],
+["Bag-of-Words Model","단어 주머니 모델","문법·어순은 무시하고 단어 출현 빈도만 유지해 텍스트를 표현하는 NLP 기법."],
+["Baseline","베이스라인","다른 모델 성능을 비교할 기준이 되는 참조 모델."],
+["Base Model","베이스 모델","파인튜닝의 출발점이 되는 사전학습 모델."],
+["Batch","배치","한 번의 학습 반복에 사용되는 예제 묶음."],
+["Batch Inference","배치 추론","다수의 비라벨 예제를 소규모 묶음으로 나눠 가속기의 병렬성을 활용해 예측하는 방식."],
+["Batch Normalization","배치 정규화","은닉층 활성화 입력·출력을 정규화해 학습을 안정화하고 과적합을 줄이는 기법."],
+["Batch Size","배치 크기","한 번의 학습 반복에 처리하는 예제 수. 보통 1부터 수천까지 조절 가능."],
+["Bayesian Neural Network","베이지안 신경망","가중치와 출력의 불확실성을 확률 분포로 표현하는 신경망."],
+["Bayesian Optimization","베이지안 최적화","불확실성을 수량화한 대체 모델을 이용해 계산 비용이 큰 목적 함수를 최적화하는 기법."],
+["Behavior Tree","행동 트리","유한한 과제 집합 간 전환을 모듈식으로 표현하는 계획 실행 모델."],
+["Bellman Equation","벨만 방정식","강화학습에서 최적 Q 함수가 만족하는 항등식으로 Q-러닝의 기반."],
+["BERT","BERT","양방향 문맥을 활용해 텍스트를 표현하는 트랜스포머·셀프 어텐션 기반 모델."],
+["Bias (Ethics/Fairness)","편향(윤리/공정성)","특정 집단에 대한 고정관념·편견·편애. 데이터 수집과 시스템 설계 전반에 영향."],
+["Bias (Math)","편향(수학)","모델이 원점을 지나지 않는 패턴도 학습할 수 있게 해 주는 절편/오프셋."],
+["Bidirectional Language Model","양방향 언어 모델","앞뒤 문맥을 모두 보고 토큰 확률을 추정하는 언어 모델."],
+["Binary Classification","이진 분류","스팸/비스팸처럼 상호 배타적인 두 클래스 중 하나를 예측하는 과제."],
+["Binary Condition","이진 조건","예·아니오처럼 결과가 두 가지뿐인 결정 트리 조건."],
+["Binning","비닝(구간화)","연속형 특성을 여러 구간의 이진 특성으로 변환해 학습에 쓰는 기법."],
+["Black Box Model","블랙박스 모델","내부 추론 과정을 인간이 이해하기 어려운 해석 불가능 모델."],
+["BLEU","BLEU","생성 텍스트와 참조 텍스트의 N-gram 중첩을 비교해 기계 번역 품질을 평가하는 0~1 지표."],
+["BLEURT","BLEURT","의미 유사성과 패러프레이즈까지 반영해 기계 번역을 평가하는 지표."],
+["Boolean Questions","BoolQ","위키피디아 구절에 근거해 예/아니오 질문에 답하는 LLM 평가용 데이터셋."],
+["Boosting","부스팅","오분류 예제 가중치를 높여가며 약한 분류기들을 강한 분류기로 반복 결합하는 기법."],
+["Bounding Box","바운딩 박스","객체 탐지를 위해 관심 영역을 감싸는 직사각형의 x,y 좌표."],
+["Broadcasting","브로드캐스팅","행렬 연산에서 피연산자 형상을 서로 호환되도록 자동 확장하는 기법."],
+["Bolt.new","Bolt.new","라이브 프리뷰와 원클릭 배포가 강점인 시각 중심 프런트엔드 바이브 코딩 플랫폼."],
+["Calibration Curve","보정 곡선","분류 모델의 예측 확률이 실제와 얼마나 잘 맞는지 시각화해 평가하는 기법."],
+["Capsule Neural Network","캡슐 네트워크","생물학적 신경 구조를 모사해 계층적 관계를 더 잘 모델링하는 ML 시스템."],
+["Case-Based Reasoning","사례 기반 추론","유사한 과거 문제의 해결책을 활용해 새로운 문제를 푸는 방법."],
+["Causal Language Modeling","인과적 언어 모델링","앞선 문맥만 보고 다음 토큰을 예측하는 언어 모델링. GPT 계열이 대표적."],
+["Chain-of-Thought Prompting","생각의 사슬(CoT) 프롬프팅","LLM이 단계별로 추론을 설명하도록 유도해 복잡한 과제의 정확도를 높이는 기법."],
+["Chatbot","챗봇","텍스트·음성으로 사람과의 대화를 모사하는 컴퓨터 프로그램."],
+["Chatbot Hallucination","챗봇 할루시네이션","챗봇이 거짓 정보를 사실처럼 자신 있게 제시하는 현상."],
+["Claude","클로드(Claude)","Anthropic의 고급 AI 모델. 깊이 있는 코드 이해와 상세한 설명으로 바이브 코딩에서 널리 사용됨."],
+["Class Imbalance","클래스 불균형","클래스 분포가 치우쳐 표준 정확도 지표가 오해를 부를 수 있는 상황."],
+["Classification","분류","범주형 출력을 예측하는 과제. 이진·다중 클래스 분류 포함."],
+["Classification Threshold","분류 임계값","양성으로 판단하기 위한 최소 확률값. 결정 경계를 결정함."],
+["Clustering","클러스터링","라벨 없이 유사한 관측값끼리 묶는 비지도 기법."],
+["Clustering Algorithms","클러스터링 알고리즘","k-평균·계층적 클러스터링 등 자연스러운 데이터 군집을 찾는 방법."],
+["Cloud Robotics","클라우드 로보틱스","클라우드 컴퓨팅 자원을 원격 활용해 로봇의 능력을 확장하는 분야."],
+["Code Interpreter","코드 인터프리터","자연어 지시를 받아 코드를 실행하는 AI 능력. AI 기반 개발의 핵심."],
+["Commonsense Knowledge","상식 지식","사람이라면 당연히 안다고 여기는 일상 세계의 사실. AI가 습득하기 어려운 영역."],
+["Commonsense Reasoning","상식 추론","평범한 상황에 대한 가정을 세우는 인간의 능력을 모사하는 AI 분야."],
+["Computational Complexity Theory","계산 복잡도 이론","문제의 내재적 난이도를 분류하고 복잡도 클래스를 연구하는 분야."],
+["Computational Creativity","계산 창의성","예술·음악 등 창의 영역에 AI를 활용하는 다학제 연구."],
+["Computer Vision","컴퓨터 비전","디지털 이미지·영상에서 고수준 의미를 이해하도록 하는 분야."],
+["Confusion Matrix","혼동 행렬","분류 결과를 TP·TN·FP·FN으로 묶어 모델 성능을 보여주는 표."],
+["Context Window","컨텍스트 윈도우","LLM이 한 번에 처리할 수 있는 최대 토큰 길이. 입·출력 크기를 제한."],
+["Continuous Integration Model","지속적 통합 모델","코드 변경 통합과 모델 품질 유지를 자동화하는 프로세스."],
+["Continuous Variables","연속형 변수","가격·온도처럼 수치 스케일로 값이 정의되는 특성."],
+["Convergence","수렴","학습 반복 사이 모델 변화가 매우 작아진 학습 상태."],
+["Convolutional Neural Network","합성곱 신경망(CNN)","주로 이미지 분석에 쓰이는 딥러닝 아키텍처."],
+["Corrective RAG","코렉티브 RAG","검색된 정보를 교정·정제해 정확도를 높이는 RAG 변형."],
+["Cross-Lingual Language Models","교차 언어 모델","여러 언어를 동시에 이해·생성하는 모델."],
+["Cross-Validation","교차 검증","데이터를 부분집합으로 나눠 여러 모델을 학습하고 성능 지표를 평균 내는 평가 기법."],
+["Crossover","교차","유전 알고리즘에서 두 부모의 유전 정보를 합쳐 자손을 만드는 연산."],
+["Cursor","커서(Cursor)","VS Code 친숙성에 여러 모델을 지원하는 고급 AI 기능을 결합한 인기 AI 코드 에디터."],
+["Data Augmentation","데이터 증강","변환으로 학습 데이터 크기를 늘려 과적합을 줄이는 기법."],
+["Data Binning","데이터 비닝","데이터를 이산 구간·버킷으로 나눠 분석하는 작업."],
+["Data Cleaning","데이터 정제","오류·불일치·불필요 정보를 제거하는 전처리 단계."],
+["Data Decomposition","데이터 분해","복잡한 데이터를 해석 가능한 단순 구성요소로 쪼개는 과정."],
+["Data Flywheel","데이터 플라이휠","개선된 출력이 더 나은 학습 데이터를 낳아 또다시 개선을 이끄는 자기강화 메커니즘."],
+["Data Granularity","데이터 세분성","데이터가 조직·분석되는 상세 수준."],
+["Data Integration","데이터 통합","서로 다른 출처의 데이터를 통합 뷰로 결합하는 작업."],
+["Data Mining","데이터 마이닝","ML·통계·DB 기법을 활용해 대용량 데이터에서 패턴을 찾는 과정."],
+["Data Science","데이터 과학","과학적 방법·통계·컴퓨팅으로 데이터에서 지식을 추출하는 학제 분야."],
+["Dataset","데이터셋","보통 테이블이나 행렬 형태로 조직된 데이터 모음."],
+["Data Warehouse","데이터 웨어하우스","이질적 소스의 통합 데이터를 저장해 분석·리포팅을 지원하는 중앙 저장소."],
+["Data-Centric AI","데이터 중심 AI","모델 복잡도보다 데이터 품질·구성을 우선해 AI를 개선하는 접근."],
+["Decision Boundary","결정 경계","분류 모델에서 서로 다른 예측 클래스를 나누는 경계면."],
+["Decision Intelligence","의사결정 인텔리전스","AI와 비즈니스 분석을 결합해 의사결정을 강화하는 분야."],
+["Decision Tree","결정 트리","조건 노드와 결정 경로 분기로 이루어진 트리 구조 모델."],
+["Deep Blue","딥 블루","세계 체스 챔피언 가리 카스파로프를 이긴 IBM 개발 AI."],
+["Deep Belief Networks","심층 신념망","RBM을 층층이 쌓아 만드는 비지도 확률 모델."],
+["Deep Learning","딥러닝","다층 신경망으로 계층적 데이터 표현을 학습하는 ML 접근."],
+["Deep Q-Network","심층 Q-네트워크(DQN)","Q-러닝에 심층 신경망을 결합한 강화학습 알고리즘."],
+["Deep Reinforcement Learning","심층 강화학습","심층 신경망을 활용해 복잡한 과제에서 에이전트를 훈련하는 강화학습."],
+["DeepEval","DeepEval","LLM과 AI 시스템을 평가하기 위한 프레임워크."],
+["DenseNet","DenseNet","층 간 밀집 연결로 기울기 흐름을 개선한 딥러닝 아키텍처."],
+["Density-Based Clustering","밀도 기반 클러스터링","DBSCAN처럼 데이터 밀도에 따라 군집을 형성하는 알고리즘."],
+["Diffusion Models","확산 모델","노이즈 추가 과정을 역으로 학습해 다양한 결과를 생성하는 모델."],
+["Dimensionality Reduction","차원 축소","PCA·t-SNE 등으로 핵심 정보를 유지하며 특성 수를 줄이는 기법."],
+["Direct Preference Optimization","DPO","보상 모델 없이 LLM 출력을 인간 선호에 정렬시키는 파인튜닝 기법."],
+["Dotfiles","닷파일","바이브 코딩 도구와 개발 환경을 커스터마이즈하는 설정 파일. 개발자 간 공유되기도 함."],
+["Embeddings","임베딩","의미를 담은 밀집 벡터 표현. 유사도 비교에 활용."],
+["Encoder","인코더","입력을 저차원 표현으로 압축하는 신경망 구성 요소."],
+["Emergence","창발","단순 요소의 상호작용에서 명시적 프로그래밍 없이 복잡한 행동이 나타나는 현상."],
+["ELIZA","엘리자","패턴 매칭으로 심리상담사를 모사한 1960년대 초기 챗봇."],
+["Ensemble Methods","앙상블 기법","여러 모델을 결합해 예측 정확도를 높이는 ML 기법군."],
+["Epoch","에포크","전체 데이터셋을 한 번 완전히 훑는 학습 단위."],
+["Evaluation Metrics","평가 지표","정확도·정밀도·재현율·F1 등 모델 성능을 정량화하는 척도."],
+["Explainability","설명가능성","AI 모델의 결정과 예측을 사람이 이해하고 해석할 수 있는 능력."],
+["Expo Go","Expo Go","바이브 코딩 원칙으로 앱을 빠르게 프로토타이핑·테스트하는 모바일 개발 플랫폼."],
+["Experimentation Framework","실험 프레임워크","AI 개발에서 통제된 테스트와 A/B 실험을 수행하는 시스템."],
+["Extrapolation","외삽","학습 데이터 범위 밖으로 예측을 확장하는 일. 일반화에 위험할 수 있음."],
+["False Negative","거짓 음성(FN)","실제 양성을 음성으로 잘못 예측한 오류(Type II)."],
+["False Positive","거짓 양성(FP)","실제 음성을 양성으로 잘못 예측한 오류(Type I)."],
+["False Positive Rate","거짓 양성률","전체 음성 중 FP의 비율. ROC 곡선의 x축."],
+["Feature","특성(feature)","관측값 속성을 기술하는 속성-값 조합. 엑셀의 셀에 비유됨."],
+["Feature Engineering","특성 공학","모델 성능을 높이기 위해 특성을 생성·변환·선택하는 과정."],
+["Feature Selection","특성 선택","데이터셋에서 모델에 유용한 특성만 추려내는 작업."],
+["Feature Vector","특성 벡터","관측값 특성값들의 리스트. 테이블의 한 행에 해당."],
+["Few-Shot Prompting","퓨샷 프롬프팅","예시 몇 개를 함께 제시해 AI가 새 문제를 풀도록 안내하는 기법."],
+["Fine-Tuning","파인튜닝","사전학습 모델을 과제별 데이터로 추가 학습시켜 특정 작업에 맞추는 과정."],
+["Foundation Model","파운데이션 모델","다양한 후속 응용의 출발점이 되는 대규모 사전학습 모델."],
+["Forward Pass","순전파","신경망 학습의 첫 단계로 데이터가 층을 지나며 예측을 내는 과정."],
+["Function Calling","함수 호출","자연어 설명을 바탕으로 특정 프로그래밍 함수를 이해·실행하는 AI 능력."],
+["Generative AI","생성형 AI","프롬프트와 학습 데이터를 바탕으로 텍스트·이미지·코드 등 새 콘텐츠를 만드는 AI."],
+["Generative Pre-trained Transformer","GPT","ChatGPT 등을 가능하게 한 대표적 LLM 아키텍처."],
+["GitHub Copilot","GitHub 코파일럿","코드 작성 중 실시간 제안을 제공하는 AI 페어 프로그래머. AI 보조 코딩의 대표 도구."],
+["Gradient Accumulation","기울기 누적","큰 배치 효과를 얻기 위해 배치를 여러 미니배치로 나눠 순차 처리 후 기울기를 누적하는 방식."],
+["Gradient Descent","경사하강법","손실 함수를 최소화하도록 파라미터를 반복적으로 조정하는 최적화 알고리즘."],
+["Gradient Boosting","그래디언트 부스팅","이전 모델의 오차를 보정하며 모델을 순차적으로 쌓는 앙상블 기법."],
+["Graph Traversal","그래프 탐색","그래프 구조를 체계적으로 탐색하는 알고리즘. 경로 탐색·계획에 사용."],
+["Grounding","그라운딩","LLM 출력을 사실 소스에 연결해 할루시네이션을 줄이는 기법."],
+["Guardrails","가드레일","LLM 출력이 제약과 윤리 기준을 지키도록 하는 안전 장치."],
+["Hallucination","할루시네이션","AI가 거짓 정보를 사실처럼 자신 있게 생성하는 현상."],
+["Hierarchical Clustering","계층적 클러스터링","중첩된 군집의 트리 구조를 만드는 클러스터링 기법."],
+["Hidden Layer","은닉층","입력과 출력 사이의 중간층으로 비선형 학습을 가능케 함."],
+["Heuristic","휴리스틱","최적해 보장을 포기하는 대신 실용적 속도로 답을 찾는 전략."],
+["Hot Reload","핫 리로드","코드 변경 시 앱을 실시간 업데이트하는 개발 편의 기능."],
+["Hyperparameter","하이퍼파라미터","학습률·망 깊이 등 학습 전에 설정하는 상위 모델 속성."],
+["Hyperparameter Tuning","하이퍼파라미터 튜닝","성능 향상을 위해 하이퍼파라미터를 체계적으로 최적화하는 과정."],
+["Inference","추론","학습된 모델을 사용해 새 데이터에 예측을 수행하는 과정."],
+["Integration","통합","여러 AI 도구·플랫폼을 연결해 일관된 개발 환경을 구성하는 일."],
+["Instance","인스턴스","데이터셋의 단일 데이터 포인트·행·샘플. '관측값'과 동의어."],
+["Implicit Bias","암묵적 편향","모델 설계·데이터 해석에 영향을 주는 무의식적 편견."],
+["Interpretability","해석가능성","AI 모델의 결정과 특성 중요도를 이해·설명할 수 있는 성질."],
+["Induction","귀납","관찰에서 이론·결론으로 나아가는 상향식 논리 접근."],
+["Jupyter","주피터","코드·문서·AI 지원을 한데 섞어 바이브 코딩을 지원하는 대화형 노트북 환경."],
+["Jailbreaking","탈옥(제일브레이킹)","LLM 안전 장치와 가드레일을 우회하려는 시도."],
+["K-Means","K-평균","군집 내 분산을 최소화해 데이터를 k개 군집으로 분할하는 중심 기반 클러스터링."],
+["K-Nearest Neighbors","K-최근접 이웃(KNN)","가장 가까운 k개 학습 예제를 바탕으로 분류하는 인스턴스 기반 학습."],
+["Karpathy, Andrej","안드레이 카파시","2025년 초 'vibe coding'이라는 용어를 처음 사용한 AI 연구자."],
+["Label","라벨","지도학습에서 모델이 예측해야 할 정답·목표값."],
+["LangChain","랭체인","LLM 기반 앱 개발을 돕고 연산의 체인을 관리하는 프레임워크."],
+["Large Language Model","대규모 언어 모델(LLM)","방대한 텍스트로 학습해 언어를 이해·생성·조작하는 신경망."],
+["Large Action Models","대규모 행동 모델(LAM)","환경을 이해·계획해 복잡한 행동을 수행하도록 설계된 AI."],
+["Lazy AI","레이지 AI","품질을 유지하면서 AI 활용을 극대화해 수작업 코딩을 최소화하는 개발 접근."],
+["Learning Rate","학습률","경사하강법에서 한 번의 업데이트 크기를 결정하는 하이퍼파라미터."],
+["Learning-to-Rank","랭킹 학습","검색 결과·추천의 순위를 최적화하는 ML 접근."],
+["LightGBM","LightGBM","리프 단위 트리 성장 전략으로 효율을 높인 그래디언트 부스팅 프레임워크."],
+["LIME","LIME","국소 근사를 통해 개별 예측 결과를 설명하는 기법."],
+["Linear Regression","선형 회귀","특성과 연속형 타깃의 선형 관계를 모델링하는 지도학습 알고리즘."],
+["LLM Agents","LLM 에이전트","LLM을 활용해 복잡한 과제를 수행하고 환경과 상호작용하는 자율 AI."],
+["LLM Alignment","LLM 정렬","LLM 행동을 인간의 가치·의도와 일치시키는 과정."],
+["LLM APIs","LLM API","LLM을 애플리케이션에 통합하는 응용 프로그래밍 인터페이스."],
+["LLM Benchmarks","LLM 벤치마크","LLM 능력을 평가하는 표준화된 데이터셋·지표."],
+["LLM Cost","LLM 비용","LLM 학습·배포에 드는 금전·연산 비용."],
+["LLM Deployment","LLM 배포","LLM을 운영 환경에 릴리스하는 준비 과정."],
+["LLM Distillation","LLM 증류","작은 모델이 큰 LLM의 행동을 모사하도록 훈련해 효율을 높이는 기법."],
+["LLM Evaluation","LLM 평가","지표·벤치마크·사람 평가로 LLM 성능을 측정하는 과정."],
+["LLM Fine-Tuning","LLM 파인튜닝","사전학습된 LLM을 특정 과제용으로 추가 학습시키는 과정."],
+["LLM Hallucinations","LLM 할루시네이션","LLM이 거짓 또는 오도하는 정보를 자신 있게 생성하는 현상."],
+["LLM Inference","LLM 추론","학습된 LLM을 사용해 예측·응답을 생성하는 과정."],
+["LLM Observability","LLM 관찰가능성","LLM의 동작과 출력을 모니터링·추적하는 역량."],
+["LLM Orchestration","LLM 오케스트레이션","복잡한 워크플로에서 다수의 LLM 구성요소와 도구를 조율하는 작업."],
+["LLM Parameters","LLM 파라미터","LLM 가중치 내 학습 가능한 값. 수십억~수조 규모."],
+["LLM Playground","LLM 플레이그라운드","프롬프트와 파라미터를 실험해볼 수 있는 대화형 환경."],
+["LLM Quantization","LLM 양자화","파라미터 정밀도를 낮춰 모델 크기를 줄이는 기법."],
+["LLM Red Teaming","LLM 레드팀","취약점과 실패 모드를 식별하기 위한 적대적 테스트."],
+["LLM Sleeper Agents","LLM 슬리퍼 에이전트","특정 조건에서만 은닉 목표가 활성화되는 가설적 AI 시스템."],
+["LLM Toxicity","LLM 유해성","LLM이 생성할 수 있는 유해·불쾌 콘텐츠를 평가하는 개념."],
+["LLM Tracing","LLM 트레이싱","디버깅·개선을 위해 LLM의 결정 과정을 기록·관찰하는 일."],
+["LLMOps","LLMOps","LLM 시스템을 배포·운영·관리하는 운영 실천."],
+["Llama","라마(Llama)","Meta가 공개한 오픈소스 LLM 시리즈."],
+["Logistic Regression","로지스틱 회귀","시그모이드 함수를 이용한 이진 분류용 지도학습 알고리즘."],
+["LSTM","LSTM","장기 의존성을 다루며 기울기 소실을 완화하는 RNN 변형."],
+["Loss Function","손실 함수","예측 오차를 수치화해 학습 중 최소화 대상이 되는 함수."],
+["Machine Learning","머신러닝","명시적 프로그래밍 없이 데이터로부터 컴퓨터가 학습하도록 하는 분야."],
+["Machine Learning Algorithm","머신러닝 알고리즘","회귀·결정 트리·SVM·신경망 등 모델 생성 방법."],
+["Machine Learning Bias","머신러닝 편향","샘플링·보고 과정의 체계적 오류로 공정성에 영향을 주는 현상."],
+["Machine Learning Inference","머신러닝 추론","학습된 모델로 새 데이터에 예측을 내는 과정."],
+["Machine Learning Lifecycle","머신러닝 수명주기","데이터 수집부터 배포·모니터링까지의 전 과정."],
+["Machine Learning Model Accuracy","머신러닝 모델 정확도","분류 모델의 올바른 예측 비율."],
+["Machine Learning Model Deployment","머신러닝 모델 배포","학습된 모델을 운영 환경에 릴리스하는 과정."],
+["Machine Learning Model Evaluation","머신러닝 모델 평가","검증 데이터와 지표로 모델 성능을 측정하는 일."],
+["Machine Learning Pipeline","머신러닝 파이프라인","전처리·특성 공학·학습 단계로 이어지는 ML 워크플로."],
+["Masked Language Models","마스킹 언어 모델","양방향 문맥으로 가려진 토큰을 예측하는 모델."],
+["Mean Absolute Error","평균 절대 오차(MAE)","예측과 실제의 절대차 평균."],
+["Mean Square Error","평균 제곱 오차(MSE)","예측과 실제의 차를 제곱해 평균낸 값."],
+["Memory-Augmented Neural Networks","메모리 증강 신경망","외부 메모리를 갖춰 추론 능력을 강화한 신경망."],
+["Meta-Learning","메타 학습","새 과제에 빠르게 적응할 수 있도록 '학습하는 법'을 학습하는 접근."],
+["Micromodels","마이크로모델","특정 과제·도메인에 특화된 소형 전문 모델."],
+["Mixture of Experts","전문가 혼합(MoE)","여러 특화 서브네트워크를 조합해 쓰는 신경망 구조."],
+["ML Architecture","ML 아키텍처","머신러닝 시스템과 구성요소의 설계·구조."],
+["ML Interpretability","ML 해석가능성","ML 모델의 결정을 이해·설명할 수 있는 능력."],
+["ML Model Card","ML 모델 카드","모델 목적·성능·한계를 기술한 문서."],
+["ML Model Validation","ML 모델 검증","홀드아웃 데이터로 모델 성능을 평가하는 일."],
+["ML Observability","ML 관찰가능성","운영 중인 ML 시스템의 동작을 관찰·이해하는 역량."],
+["ML Orchestration","ML 오케스트레이션","여러 ML 워크플로 구성요소를 조율하는 작업."],
+["MLOps","MLOps","ML 시스템 운영·엔지니어링 실천 체계."],
+["Model Calibration","모델 보정","예측 확률이 실제 빈도와 일치하도록 출력을 조정하는 일."],
+["Model Collapse","모델 붕괴","AI 생성 데이터로 학습된 모델 품질이 점차 저하되는 현상."],
+["Model Distillation","모델 증류","작은 모델이 큰 모델의 행동을 복제하도록 훈련하는 기법."],
+["Model Drift","모델 드리프트","데이터 분포 변화로 시간이 지나며 성능이 저하되는 현상."],
+["Model Explainability","모델 설명가능성","모델 결정을 해석·설명하는 기법."],
+["Model Fairness","모델 공정성","ML 모델이 보호 집단을 차별하지 않도록 하는 개념."],
+["Model Merging","모델 병합","여러 학습된 모델을 하나로 결합하는 과정."],
+["Model Monitoring","모델 모니터링","운영 중 모델 성능을 지속적으로 추적하는 일."],
+["Model Observability","모델 관찰가능성","모델 동작을 관찰·이해·디버깅하는 역량."],
+["Model Registry","모델 레지스트리","모델 버전·메타데이터·배포 정보를 관리하는 중앙 시스템."],
+["Model Retraining","모델 재학습","새 데이터로 모델을 주기적으로 갱신해 성능을 유지하는 일."],
+["Model Robustness","모델 강건성","적대적 예제와 분포 변화에 대한 내성."],
+["Model Selection","모델 선택","과제에 적합한 알고리즘·아키텍처를 고르는 일."],
+["Model Tuning","모델 튜닝","하이퍼파라미터·아키텍처를 최적화하는 과정."],
+["Model-Based Machine Learning","모델 기반 머신러닝","확률 분포를 명시적으로 모델링해 추론하는 접근."],
+["Modular RAG","모듈형 RAG","검색과 추론 모듈을 독립적으로 구성하는 RAG 변형."],
+["Multimodal Model","멀티모달 모델","텍스트·이미지·오디오·영상 등 여러 입·출력 유형을 처리·생성하는 AI 모델."],
+["Multilingual LLM","멀티링구얼 LLM","여러 언어를 이해·생성할 수 있는 대규모 언어 모델."],
+["Multi-Class Classification","다중 클래스 분류","여러 가능한 클래스 중 하나를 예측하는 분류 과제."],
+["Natural Language Processing","자연어 처리(NLP)","기계가 사람 언어를 이해·해석·생성하도록 하는 분야."],
+["Neural Network","신경망","뇌 구조를 본떠 연결된 노드로 패턴을 인식하는 수학적 시스템."],
+["Neuron","뉴런","가중 입력을 활성화 함수로 결합하는 신경망의 기본 처리 단위."],
+["Normalization","정규화","특성값을 비슷한 스케일로 조정해 학습 안정성을 높이는 기법."],
+["Noise","노이즈","데이터 속 패턴을 흐리게 만드는 불필요한 정보."],
+["Null Accuracy","기본 정확도","불균형 데이터에서 가장 빈도가 높은 클래스를 항상 예측했을 때 나오는 기준 정확도."],
+["Observation","관측값","데이터셋의 한 샘플·행. '인스턴스'와 동의어."],
+["OpenAI","OpenAI","GPT 모델을 개발해 많은 바이브 코딩 도구의 기반이 된 선도 AI 연구 기업."],
+["Optimization","최적화","손실 함수를 최소화하도록 모델 파라미터를 조정하는 과정."],
+["Outlier","이상치","다른 관측값과 크게 다른 데이터 포인트."],
+["Overfitting","과적합","학습 데이터의 노이즈까지 학습해 새 데이터에는 성능이 떨어지는 현상."],
+["Panoptic Segmentation","파놉틱 분할","인스턴스 분할과 의미 분할을 통합한 이미지 분할 방식."],
+["Parameter","파라미터","학습 중 조정되는 모델 가중치 값. 하이퍼파라미터와 대비."],
+["Parameter-Efficient Fine-Tuning","PEFT(파라미터 효율 파인튜닝)","소수의 학습 파라미터만으로 모델을 미세조정하는 기법."],
+["Pattern Recognition","패턴 인식","데이터 내 반복되는 구조·관계를 식별하는 일."],
+["PCA","PCA(주성분 분석)","분산이 큰 주성분 방향을 찾는 차원 축소 기법."],
+["Perplexity","퍼플렉서티","언어 모델이 텍스트를 얼마나 잘 예측하는지 측정하는 지표."],
+["Plagiarism","표절","타인의 말이나 아이디어를 출처 없이 사용하는 행위. AI 생성물에서도 중요한 이슈."],
+["Pooling Layers","풀링 레이어","공간 차원을 줄이면서 중요한 특성은 보존하는 신경망 층."],
+["Positional Encoding","위치 인코딩","트랜스포머가 토큰 순서를 이해하도록 돕는 기법."],
+["Precision","정밀도","양성으로 예측한 것 중 실제 양성의 비율."],
+["Pre-trained Model","사전학습 모델","대규모 데이터로 미리 학습돼 파인튜닝 출발점으로 쓰이는 모델."],
+["Prompt","프롬프트","AI가 응답의 근거로 삼는 사용자 입력. 텍스트·멀티모달 모두 포함."],
+["Prompt Chaining","프롬프트 체이닝","한 모델의 출력을 다음 모델의 프롬프트로 이어서 넣는 기법."],
+["Prompt Engineering","프롬프트 엔지니어링","원하는 결과를 얻기 위해 효과적인 프롬프트를 설계하는 기술."],
+["Prompt Injection","프롬프트 인젝션","특수하게 만든 프롬프트로 AI 동작을 조작하려는 공격 기법."],
+["Prompt Injection Testing","프롬프트 인젝션 테스트","프롬프트 기반 공격 취약점을 점검하는 보안 테스트."],
+["Prompt Management","프롬프트 관리","AI 앱에서 프롬프트를 정리·버전 관리하는 시스템."],
+["Prompt Playground","프롬프트 플레이그라운드","프롬프트와 모델 파라미터를 실험하는 대화형 환경."],
+["Q-Function","Q 함수","강화학습에서 상태-행동 쌍의 가치를 추정하는 함수."],
+["Q-Learning","Q-러닝","Q 함수를 업데이트하며 최적 정책을 학습하는 강화학습 알고리즘."],
+["Quantization","양자화","모델 가중치의 수치 정밀도를 낮춰 크기와 연산량을 줄이는 기법."],
+["Quick Fix","퀵 픽스","코딩 문제에 빠른 해법을 제안·적용하는 AI 기반 기능."],
+["RAG","RAG","문서 검색과 텍스트 생성을 결합해 정확도와 근거를 높이는 기법."],
+["RAG Architecture","RAG 아키텍처","검색·생성 구성요소를 구현하는 RAG 설계 패턴."],
+["RAG Evaluation","RAG 평가","RAG 시스템의 검색·생성·엔드투엔드 성능을 평가하는 일."],
+["Random Forests","랜덤 포레스트","데이터 부분집합으로 학습한 여러 결정 트리를 결합한 앙상블."],
+["Reasoning Engine","추론 엔진","문제를 분해하고 논리적 결론을 도출하도록 돕는 AI 시스템."],
+["Recall","재현율","실제 양성 중 올바르게 식별한 비율."],
+["Recall at k","Recall@k","상위 k개 결과 중 관련 항목이 차지하는 비율을 측정하는 지표."],
+["Recurrent Neural Network","순환 신경망(RNN)","은닉 상태로 순차 데이터를 처리하는 신경망 아키텍처."],
+["Regression","회귀","가격·온도 같은 연속형 수치 출력을 예측하는 과제."],
+["Regularization","정규화(과적합 방지)","복잡도 패널티를 손실에 더해 과적합을 억제하는 기법."],
+["Reinforcement Learning","강화학습","시행착오로 보상을 극대화하도록 모델을 훈련하는 방식."],
+["Reinforcement Learning from Human Feedback","RLHF(인간 피드백 강화학습)","보상 모델을 통해 모델 출력을 인간 선호에 정렬시키는 파인튜닝 기법."],
+["Replit","Replit","통합 AI 기능으로 바이브 코딩을 지원하는 클라우드 기반 개발 환경."],
+["ResNet","ResNet","잔차 연결로 매우 깊은 망의 기울기 흐름을 개선한 딥러닝 아키텍처."],
+["Retrieval-Augmented Generation","검색 증강 생성(RAG)","언어 모델을 외부 지식 소스에 연결하는 기법."],
+["Ridge Regression","릿지 회귀","L2 정규화를 적용해 과적합을 막는 선형 회귀."],
+["ROC Curve","ROC 곡선","여러 임계값에서 분류 모델 성능을 시각화하는 그래프."],
+["Sampling","샘플링","더 큰 모집단에서 분석용 부분집합을 선정하는 일."],
+["Schema","스키마","데이터 구성과 관계를 구조화해 표현한 것."],
+["Scikit-Learn","사이킷런","알고리즘과 전처리 도구를 제공하는 대표적 파이썬 ML 라이브러리."],
+["Self-Attention","셀프 어텐션","각 토큰이 나머지 토큰과 관계를 평가해 문맥을 이해하도록 하는 트랜스포머 핵심 메커니즘."],
+["Self-Consistency CoT","자기 일관성 CoT","여러 추론 경로를 생성한 뒤 가장 빈번한 답을 고르는 CoT 변형."],
+["Semantic Router","시맨틱 라우터","키워드가 아닌 의미에 따라 요청을 라우팅하는 시스템."],
+["Semi-Supervised Learning","준지도 학습","라벨 데이터와 비라벨 데이터를 함께 써서 성능을 높이는 학습 방식."],
+["Sentiment Analysis","감성 분석","텍스트를 긍정·부정·중립 등 감정 범주로 분류하는 과제."],
+["Seq2Seq Model","시퀀스-투-시퀀스 모델","입력 시퀀스를 인코딩하고 출력 시퀀스를 디코딩하는 구조."],
+["Shadow Deployment","섀도 배포","사용자 노출 없이 신모델을 기존 모델과 나란히 배포해 비교하는 기법."],
+["Shapley Values","섀플리 값","게임이론에 근거해 특성이 예측에 기여한 정도를 계산하는 기법."],
+["Sigmoid Function","시그모이드 함수","출력이 0~1 사이인 활성화 함수. 이진 분류에 자주 사용."],
+["Softmax Function","소프트맥스 함수","로짓을 다중 클래스 확률 분포로 변환하는 활성화 함수."],
+["Supabase","수파베이스","바이브 코딩 도구와 궁합이 좋은 오픈소스 Firebase 대안 백엔드."],
+["Supervised Learning","지도학습","입력-출력 쌍이 주어진 라벨 데이터로 모델을 학습시키는 방식."],
+["Support Vector Machine","서포트 벡터 머신(SVM)","고차원 공간에서 클래스를 분리하는 최적의 초평면을 찾는 알고리즘."],
+["Surrogate Model","대체 모델","복잡한 모델의 동작을 근사해 해석성·효율을 높이는 간단한 모델."],
+["Synthetic Data","합성 데이터","실제 데이터 분포를 모사해 인위적으로 생성한 데이터."],
+["TensorFlow","텐서플로(TensorFlow)","Google이 만든 오픈소스 ML 프레임워크."],
+["Test Set","테스트셋","모델 일반화 성능 평가를 위해 남겨둔 최종 평가용 데이터."],
+["Text-to-Audio Generation","텍스트→오디오 생성","텍스트 설명을 바탕으로 오디오를 생성하는 기술."],
+["Text-to-Code Generation","텍스트→코드 생성","자연어 설명에서 코드를 생성하는 기술."],
+["Text-to-Design Generation","텍스트→디자인 생성","텍스트 설명으로 비주얼 디자인 요소를 생성하는 기술."],
+["Text-to-Face Generation","텍스트→얼굴 생성","텍스트 설명에서 사실적 얼굴 이미지를 생성하는 기술."],
+["Text-to-Game Content Generation","텍스트→게임 콘텐츠 생성","텍스트 설명에서 게임 콘텐츠를 생성하는 기술."],
+["Text-to-Image Generation","텍스트→이미지 생성","텍스트로 이미지를 생성하는 기술. DALL·E, Midjourney 등이 대표."],
+["Text-to-3D Model Generation","텍스트→3D 모델 생성","텍스트 설명에서 3D 오브젝트를 생성하는 기술."],
+["Text-to-Video Generation","텍스트→영상 생성","텍스트 설명에서 영상을 생성하는 기술."],
+["Time to First Token","첫 토큰까지의 시간(TTFT)","첫 토큰이 나오기까지의 지연 시간. 인터랙티브 시스템에 중요한 지표."],
+["Token","토큰","언어 모델이 처리하는 기본 단위. 단어·서브워드 등."],
+["Tokenization","토큰화","텍스트를 모델이 처리할 수 있도록 토큰으로 쪼개는 과정."],
+["Top-1 Error Rate","Top-1 에러율","모델의 최상위 예측이 틀린 비율을 측정하는 지표."],
+["Training Data","학습 데이터","AI 모델 최적화에 사용되는 데이터셋."],
+["Training Set","학습셋","모델 학습과 파라미터 최적화에 쓰이는 데이터 부분."],
+["Transfer Learning","전이 학습","사전학습된 가중치를 새 과제의 출발점으로 재활용하는 기법."],
+["Transformer","트랜스포머","셀프 어텐션으로 병렬 처리를 수행하는 현대 LLM의 기반 신경망 아키텍처."],
+["Tree-Based Models","트리 기반 모델","결정 트리·랜덤 포레스트 등 트리 구조로 의사결정을 하는 모델군."],
+["Tree-of-Thought","생각의 나무(ToT)","여러 추론 경로를 계층적으로 탐색하는 고급 프롬프팅 기법."],
+["True Negative","참 음성(TN)","음성을 음성으로 올바르게 예측한 사례."],
+["True Positive","참 양성(TP)","양성을 양성으로 올바르게 예측한 사례."],
+["True Positive Rate","참 양성률","실제 양성 중 올바르게 식별된 비율. 민감도라고도 함."],
+["Type 1 Error","제1종 오류","음성을 양성으로 잘못 예측하는 거짓 양성 오류."],
+["Type 2 Error","제2종 오류","양성을 음성으로 잘못 예측하는 거짓 음성 오류."],
+["TypeScript","타입스크립트","강력한 타입 시스템을 갖춘 JavaScript 상위 집합. 바이브 코딩과 잘 어울림."],
+["Underfitting","과소적합","모델이 지나치게 일반화되어 데이터 변동을 포착하지 못해 전체적으로 성능이 낮은 상태."],
+["Unidirectional Language Model","단방향 언어 모델","앞선 문맥만 보고 예측하는 언어 모델."],
+["Unit Testing","유닛 테스트","AI가 테스트 케이스를 자동 생성·유지해주며 강화되는 테스트 기법."],
+["Universal Approximation Theorem","보편 근사 정리","은닉층 하나의 신경망이 입력 범위 내 임의의 연속 함수를 근사할 수 있다는 정리."],
+["Unsupervised Learning","비지도 학습","라벨 없는 데이터에서 패턴을 찾도록 모델을 학습시키는 방식. 클러스터링 포함."],
+["Validation Set","검증셋","학습 중 일반화 성능을 확인하고 과적합을 감지하는 데 쓰이는 데이터."],
+["Vanishing Gradient Problem","기울기 소실 문제","깊은 망에서 기울기가 너무 작아져 학습이 잘 되지 않는 문제."],
+["Variance","분산","예측 일관성을 나타내는 지표. 분산이 크면 과적합 가능성이 있음."],
+["Variational Autoencoder","변분 오토인코더(VAE)","확률적 인코딩을 사용하는 생성형 오토인코더."],
+["Vercel","버셀(Vercel)","특히 프런트엔드에서 바이브 코딩과 매끄럽게 연동되는 배포 플랫폼."],
+["Vibe Coding","바이브 코딩","자연어 설명으로 소프트웨어를 만들어 빠르게 개발하는 AI 기반 프로그래밍 접근."],
+["Vibe-Driven Development","바이브 드리븐 개발","경직된 프로세스보다 팀의 조화·창의성·사용자 감성 연결을 우선하는 개발 방법론."],
+["Weight","가중치","특성 중요도를 결정하며 학습 중 조정되는 신경망 파라미터."],
+["Windsurf","윈드서프(Windsurf)","코드 생성과 프로젝트 관리를 결합한 바이브 코딩용 AI 개발 플랫폼."],
+["Xcode","Xcode","AI 기능을 통합해 iOS 개발에서 바이브 코딩을 지원하는 애플의 IDE."],
+["YAML","YAML","AI 도구 설정과 프로젝트 구성에 널리 쓰이는 설정 포맷."],
+["Zero-Shot Learning","제로샷 학습","별도 훈련 예시 없이도 코드·작업을 이해·생성하는 AI 능력. 바이브 코딩의 핵심."],
+["Zero-Shot Chain-of-Thought","제로샷 CoT","예시 없이 논리적 추론을 생성하도록 프롬프팅하는 기법."]
+];
+
+const grid = document.getElementById('grid');
+const q = document.getElementById('q');
+const stat = document.getElementById('stat');
+const alpha = document.getElementById('alpha');
+
+const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let activeLetter = "ALL";
+
+const termLetters = new Set(DATA.map(d => d[0][0].toUpperCase()));
+
+function buildAlpha(){
+  const all = document.createElement('button');
+  all.textContent = 'ALL'; all.dataset.l='ALL';
+  all.classList.add('active');
+  alpha.appendChild(all);
+  LETTERS.forEach(L=>{
+    const b = document.createElement('button');
+    b.textContent = L; b.dataset.l = L;
+    if(!termLetters.has(L)) b.classList.add('disabled');
+    alpha.appendChild(b);
+  });
+  alpha.addEventListener('click', e=>{
+    const btn = e.target.closest('button');
+    if(!btn || btn.classList.contains('disabled')) return;
+    activeLetter = btn.dataset.l;
+    [...alpha.children].forEach(c=>c.classList.toggle('active', c===btn));
+    render();
+  });
+}
+
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function highlight(s, kw){
+  if(!kw) return escapeHTML(s);
+  const re = new RegExp('('+kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return escapeHTML(s).replace(re,'<mark>$1</mark>');
+}
+
+function render(){
+  const kw = q.value.trim();
+  const lower = kw.toLowerCase();
+  const filtered = DATA.filter(([t,k,d])=>{
+    if(activeLetter!=='ALL' && t[0].toUpperCase()!==activeLetter) return false;
+    if(!kw) return true;
+    return t.toLowerCase().includes(lower) || k.toLowerCase().includes(lower) || d.toLowerCase().includes(lower);
+  });
+
+  stat.innerHTML = `전체 <b>${DATA.length}</b>개 용어 중 <b>${filtered.length}</b>개 표시`;
+
+  if(!filtered.length){
+    grid.innerHTML = `<div class="empty">검색 결과가 없어요. 다른 키워드로 시도해 보세요.</div>`;
+    return;
+  }
+
+  let html = '';
+  let lastL = '';
+  filtered.forEach(([t,k,d])=>{
+    const L = t[0].toUpperCase();
+    if(L !== lastL){
+      html += `<h2 class="section-head" id="sec-${L}">${L}</h2>`;
+      lastL = L;
+    }
+    html += `<article class="card">
+      <h3 class="term">${highlight(t,kw)}</h3>
+      <div class="ko">${highlight(k,kw)}</div>
+      <p class="def">${highlight(d,kw)}</p>
+    </article>`;
+  });
+  grid.innerHTML = html;
+}
+
+let t;
+q.addEventListener('input', ()=>{ clearTimeout(t); t=setTimeout(render,120); });
+
+buildAlpha();
+render();
+</script>
+</body>
+</html>
